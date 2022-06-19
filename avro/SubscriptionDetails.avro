@@ -1,0 +1,27 @@
+{
+  "namespace": "com.aligntech.orders",
+  "type": "record",
+  "name": "SubscriptionDetails",
+  "doc": "This is avro schema for Submission Type and holds Subscription specific details",
+  "fields": [
+    {
+      "name": "subscriptionType",
+      "type": [
+        "null",
+        "boolean"
+      ],
+      "default": null,
+      "doc": "SubscriptionType of an order"
+    },
+    {
+      "name": "subscriptionId",
+      "type": [
+        "null",
+        "string"
+      ],
+      "logicalType": "UUID",
+      "default": null,
+      "doc": "UUID of subscription Id"
+    }
+  ]
+}

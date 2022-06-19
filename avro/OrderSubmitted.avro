@@ -1,0 +1,38 @@
+{
+  "namespace": "com.aligntech.orders",
+  "type": "record",
+  "name": "OrderSubmitted",
+  "doc": "This is avro schema for OrderSubmitted Event",
+  "fields": [
+    {
+      "name": "orderSubmittedDate",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      },
+      "doc": "Date when the Treatment form is submitted by the Doctor"
+    },
+    {
+      "name": "orderSubmittedType",
+      "type": "string",
+      "doc": "Type of submission Online or Offline"
+    },
+    {
+      "name": "orderSubmittedBy",
+      "type": "string",
+      "doc": "Treatment form submitted by user. User can be clinId or offline submitter"
+    },
+    {
+      "name": "OrderHeader",
+      "type": "com.aligntech.orders.OrderHeader"
+    },
+    {
+      "name": "orderFeatures",
+      "type": {
+        "type": "array",
+        "items" : "string"
+      },
+      "doc": "Check for the features like Vivera Configurable for the order"
+    }
+  ]
+}
