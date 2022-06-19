@@ -1,0 +1,29 @@
+---
+asyncapi: "2.0.0"
+id: 'urn:asyncapi:aligntech:order:ordersubmitted'
+info:
+  title: Order Submitted Event
+  description: |
+    Message details regarding Order Submitted Event
+  version: 0.0.1
+servers:
+  localhost:
+    url: localhost:9092
+    protocol: kafka
+    protocolVersion: '1.0.0'
+channels:
+  order_submitted:
+    description: This is Order Submitted Kafka Topic
+    publish:
+      operationId: order_submitted
+      summary: Order Submitted Event
+      description: Message details regarding Order Submitted Event
+      message:
+        schemaFormat: "application/vnd.apache.avro;version=1.9.0"
+        contentType: "application/octet-stream"
+        bindings:
+          kafka:
+            key:
+              type: string
+        payload:
+          $ref: "https://raw.githubusercontent.com/graj00/asyncapi/main/avro/OrderSubmitted.avsc"
