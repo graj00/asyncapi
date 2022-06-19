@@ -27,3 +27,16 @@ channels:
               type: string
         payload:
           $ref: "https://raw.githubusercontent.com/graj00/asyncapi/main/avro/OrderSubmitted.avsc"
+    subscribe:
+      operationId: order_submitted
+      summary: Order Submitted Event
+      description: Message details regarding Order Submitted Event
+      message:
+        schemaFormat: "application/vnd.apache.avro;version=1.9.0"
+        contentType: "application/octet-stream"
+        bindings:
+          kafka:
+            key:
+              type: string
+        payload:
+          $ref: "https://raw.githubusercontent.com/graj00/asyncapi/main/avro/OrderSubmitted.avsc"
