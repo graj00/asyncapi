@@ -1,6 +1,6 @@
 asyncapi: 2.4.0
 info:
-  title: 'Order'
+  title: 'OrderV2'
   version: 1.0.0
   description: Order Related Events
 servers:
@@ -11,11 +11,11 @@ servers:
     security:
     - saslScram: []
 channels:
-  ids.order.complete:
+  ids.order.submitted:
     description: The topic on which order complete event is publish.
     publish: 
       summary: Inform about Order Completion in IDS
-      operationId: OrderComplete
+      operationId: OrderSubmitted
       message:
         schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
         traits:
@@ -37,6 +37,39 @@ channels:
           - name: shippingProvider
             type: string
             doc: shippingProvider Name like UPS, USPS, FedEx etc.
+      traits: 
+      - $ref: '#/components/operationTraits/kafka'
+  ids.order.complete:
+    description: The topic on which order complete event is publish.
+    publish: 
+      summary: Inform about Order Completion in IDS
+      operationId: OrderComplete
+      message:
+        schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
+        traits:
+          - $ref: '#/components/messageTraits/commonHeaders'
+        payload:
+          namespace: com.aligntech.orders
+          type: record
+          name: OrderSubmitted
+          doc: This is avro schema for OrderSubmitted Event
+          fields:
+          - name: orderSubmittedDate
+            type:
+              type: long
+              logicalType: timestamp-millis
+            doc: Date when the Treatment form is submitted by the Doctor
+          - name: orderSubmittedType
+            type: string
+            doc: Type of submission Online or Offline
+          - name: orderSubmittedBy
+            type: string
+            doc: Treatment form submitted by user. User can be clinId or offline submitter
+          - name: orderFeatures
+            type:
+              type: array
+              items: string
+            doc: Check for the features like Vivera Configurable for the order
       traits: 
       - $ref: '#/components/operationTraits/kafka'
 components:
