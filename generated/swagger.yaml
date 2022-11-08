@@ -14,29 +14,7 @@ channels:
   ids.order.submitted:
     description: The topic on which order complete event is publish.
     publish: 
-      summary: Inform about Order Completion in IDS
-      operationId: OrderSubmitted
-      message:
-        schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
-        traits:
-          - $ref: '#/components/messageTraits/commonHeaders'
-        payload:
-          namespace: com.aligntech.orders
-          type: record
-          name: OrderComplete
-          doc: This is avro schema for Order Complete Event
-          fields:
-          - name: orderShippedAt
-            type:
-              type: long
-              logicalType: timestamp-millis
-              doc: orderShippedDate of the order recevied from MES event
-          - name: shipmentTrackingNumber
-            type: string
-            doc: Tracking Number for a shipment
-          - name: shippingProvider
-            type: string
-            doc: shippingProvider Name like UPS, USPS, FedEx etc.
+      $ref: 'https://raw.githubusercontent.com/graj00/asyncapi/swaggerhub/avro/SubscriptionDetails.avsc'
       traits: 
       - $ref: '#/components/operationTraits/kafka'
   ids.order.complete:
