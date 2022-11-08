@@ -14,7 +14,7 @@ channels:
   ids.order.submitted:
     description: The topic on which order complete event is publish.
     publish: 
-      $ref: 'https://raw.githubusercontent.com/graj00/asyncapi/swaggerhub/avro/OrderHeader.avsc'
+      $ref: 'https://raw.githubusercontent.com/graj00/asyncapi/swaggerhub/avro/SubscriptionDetails.avsc'
       traits: 
       - $ref: '#/components/operationTraits/kafka'
   ids.order.complete:
